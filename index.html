@@ -6,51 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AbdulRahman Essam | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    
+
+
 </head>
 
 <body class="dark-mode">
     <!-- Header -->
-    <header id="header">
+   <header id="header">
 
-        <!-- Menu Toggle for Mobile -->
-<button class="menu-toggle" aria-label="Toggle navigation">
-  <i class="fas fa-bars"></i>
-</button>
+  <nav class="navbar">
+    <!-- Menu Toggle for Mobile (خليه هنا جوه nav فوق كل حاجة) -->
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
 
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <img src="images/Logo L.png" alt="Logo" class="logo-img">
+    </a>
 
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <img src="images/Logo L.png" alt="Logo" class="logo-img">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                <li><a href="#about" data-en="About" data-ar="عني">About</a></li>
-                <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
-                <li><a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
-                <li><a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
-                <li><a href="#courses" data-en="Courses" data-ar="الدورات">Courses</a></li>
-                <li><a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a></li>
-                <li>
-                    <button class="language-switcher" id="languageSwitcher">
-                        <i class="fas fa-language"></i>
-                        <span>EN</span>
-                    </button>
-                </li>
-                <li>
-                    <button class="theme-switcher" id="themeSwitcher">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                </li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
+    <!-- Nav Links -->
+    <ul class="nav-links">
+      <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+      <li><a href="#about" data-en="About" data-ar="عني">About</a></li>
+      <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+      <li><a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
+      <li><a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
+      <li><a href="#courses" data-en="Courses" data-ar="الدورات">Courses</a></li>
+      <li><a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a></li>
+      <li>
+        <button class="language-switcher" id="languageSwitcher">
+          <i class="fas fa-language"></i>
+          <span>EN</span>
+        </button>
+      </li>
+      <li>
+        <button class="theme-switcher" id="themeSwitcher">
+          <i class="fas fa-sun"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+</header>
+
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -59,7 +61,7 @@
             <div class="floating-element"></div>
             <div class="floating-element"></div>
         </div>
-        
+
         <div class="hero-image">
             <img src="images/Logo L.png" alt="AbdulRahman Essam">
         </div>
@@ -78,7 +80,7 @@
                 <a href="#contact" class="btn btn-outline" data-en="Contact Me" data-ar="اتصل بي">Contact Me</a>
             </div>
         </div>
-        
+
     </section>
 
     <!-- About Section -->
@@ -125,98 +127,122 @@
         </div>
     </section>
 
-   <!-- Skills Section -->
-  <section class="section" id="skills">
-    <div class="section-title">
-      <h2 data-en="My Skills" data-ar="مهاراتي">My Skills</h2>
-      <p data-en="Technical and professional capabilities" data-ar="القدرات التقنية والمهنية">
-        Technical and professional capabilities
-      </p>
-    </div>
-
-    <div class="skills-container">
-      <!-- Front End -->
-      <div class="skills-category">
-        <h3 data-en="Front End" data-ar="الواجهة الأمامية">Front End</h3>
-        <div class="skills-list">
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-            <div class="skill-name">HTML</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 95%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-            <div class="skill-name">CSS</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 90%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fab fa-js"></i></div>
-            <div class="skill-name">JavaScript</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fab fa-react"></i></div>
-            <div class="skill-name">React</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
-          </div>
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-title">
+            <h2 data-en="My Skills" data-ar="مهاراتي">My Skills</h2>
+            <p data-en="Technical and professional capabilities" data-ar="القدرات التقنية والمهنية">
+                Technical and professional capabilities
+            </p>
         </div>
-      </div>
 
-      <!-- Back End -->
-      <div class="skills-category">
-        <h3 data-en="Back End" data-ar="الخلفية">Back End</h3>
-        <div class="skills-list">
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fab fa-python"></i></div>
-            <div class="skill-name">Python</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="devicon-cplusplus-plain colored"></i></div>
-            <div class="skill-name">C++</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fas fa-server"></i></div>
-            <div class="skill-name">C#</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 70%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fas fa-database"></i></div>
-            <div class="skill-name">SQL</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
-          </div>
-        </div>
-      </div>
+        <div class="skills-container">
+            <!-- Front End -->
+            <div class="skills-category">
+                <h3 data-en="Front End" data-ar="الواجهة الأمامية">Front End</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                        <div class="skill-name">HTML</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                        <div class="skill-name">CSS</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fab fa-js"></i></div>
+                        <div class="skill-name">JavaScript</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fab fa-react"></i></div>
+                        <div class="skill-name">React</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Soft Skills -->
-      <div class="skills-category">
-        <h3 data-en="Soft Skills" data-ar="المهارات الشخصية">Soft Skills</h3>
-        <div class="skills-list">
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fas fa-comments"></i></div>
-            <div class="skill-name">Communication</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 90%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fas fa-users"></i></div>
-            <div class="skill-name">Teamwork</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 95%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
-            <div class="skill-name">Problem Solving</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon"><i class="fas fa-clock"></i></div>
-            <div class="skill-name">Time Management</div>
-            <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
-          </div>
+            <!-- Back End -->
+            <div class="skills-category">
+                <h3 data-en="Back End" data-ar="الخلفية">Back End</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fab fa-python"></i></div>
+                        <div class="skill-name">Python</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="devicon-cplusplus-plain colored"></i></div>
+                        <div class="skill-name">C++</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fas fa-server"></i></div>
+                        <div class="skill-name">C#</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-name">SQL</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skills-category">
+                <h3 data-en="Soft Skills" data-ar="المهارات الشخصية">Soft Skills</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fas fa-comments"></i></div>
+                        <div class="skill-name">Communication</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fas fa-users"></i></div>
+                        <div class="skill-name">Teamwork</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="skill-name">Problem Solving</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"><i class="fas fa-clock"></i></div>
+                        <div class="skill-name">Time Management</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Projects Section -->
     <section class="section" id="projects">
@@ -231,8 +257,7 @@
                 <div class="projects-grid">
                     <!-- Project 1 with Behance Link -->
                     <a href="https://www.behance.net/gallery/1234567/Project-Name" target="_blank" class="project-card">
-                        <img src="images/Soon.jpg"
-                            alt="Brand Identity Design">
+                        <img src="images/Soon.jpg" alt="Brand Identity Design">
                         <div class="project-overlay">
                             <h4 data-en="Brand Identity" data-ar="هوية العلامة التجارية">Brand Identity</h4>
                             <p data-en="Complete brand identity design for a startup"
@@ -247,8 +272,7 @@
 
                     <!-- Project 2 with Behance Link -->
                     <a href="https://www.behance.net/gallery/7654321/Project-Name" target="_blank" class="project-card">
-                        <img src="images/Soon.jpg"
-                            alt="Social Media Campaign">
+                        <img src="images/Soon.jpg" alt="Social Media Campaign">
                         <div class="project-overlay">
                             <h4 data-en="Social Media Campaign" data-ar="حملة وسائل التواصل الاجتماعي">Social Media
                                 Campaign</h4>
@@ -284,8 +308,7 @@
                 <div class="projects-grid">
                     <!-- Project 1 with GitHub Link -->
                     <a href="https://github.com/yourusername/ecommerce-project" target="_blank" class="project-card">
-                        <img src="images/Soon.jpg"
-                            alt="E-commerce Website">
+                        <img src="images/Soon.jpg" alt="E-commerce Website">
                         <div class="project-overlay">
                             <h4 data-en="E-commerce Website" data-ar="موقع تجارة إلكترونية">E-commerce Website</h4>
                             <p data-en="Full-stack online store with React" data-ar="متجر إلكتروني كامل باستخدام React">
@@ -299,8 +322,7 @@
 
                     <!-- Project 2 with Live Demo and GitHub Links -->
                     <div class="project-card">
-                        <img src="images/Soon.jpg"
-                            alt="Mobile Application">
+                        <img src="images/Soon.jpg" alt="Mobile Application">
                         <div class="project-overlay">
                             <h4 data-en="Mobile Application" data-ar="تطبيق جوال">Mobile Application</h4>
                             <p data-en="Cross-platform app for task management"
@@ -321,8 +343,7 @@
 
                     <!-- Project 3 with GitHub Link -->
                     <a href="https://github.com/yourusername/data-analysis-tool" target="_blank" class="project-card">
-                        <img src="images/Soon.jpg"
-                            alt="Data Analysis Tool">
+                        <img src="images/Soon.jpg" alt="Data Analysis Tool">
                         <div class="project-overlay">
                             <h4 data-en="Data Analysis Tool" data-ar="أداة تحليل بيانات">Data Analysis Tool</h4>
                             <p data-en="Python application for business analytics"
@@ -565,9 +586,9 @@
         </div>
     </footer>
 
- 
 
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
