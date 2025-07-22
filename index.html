@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AbdulRahman Essam | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Script.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
@@ -561,57 +561,6 @@
         </div>
     </footer>
 
-    <!-- Contact Form -->
-<form id="contactForm" action="https://formspree.io/f/xblkdojz" method="POST">
-  <input type="text" name="name" required placeholder="Your Name" data-en="Your Name" data-ar="اسمك">
-  <input type="email" name="email" required placeholder="Your Email" data-en="Your Email" data-ar="بريدك الإلكتروني">
-  <textarea name="message" required placeholder="Your Message" data-en="Your Message" data-ar="رسالتك"></textarea>
-  <button type="submit" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
-</form>
-
-<!-- Success Message Placeholder -->
-<div id="formMessage" style="display:none; margin-top: 10px; color: green;"
-     data-en="Thank you! Your message has been sent successfully."
-     data-ar="شكرًا لك! تم إرسال رسالتك بنجاح.">
-</div>
-
-<!-- Script -->
-<script>
-  const contactForm = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
-
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // امنع الإرسال التقليدي
-
-    const formData = new FormData(contactForm);
-
-    fetch(contactForm.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        contactForm.reset();
-        showSuccessMessage();
-      } else {
-        alert('حدث خطأ أثناء الإرسال.');
-      }
-    }).catch(error => {
-      alert('تعذر الاتصال بالسيرفر.');
-    });
-  });
-
-  function showSuccessMessage() {
-    const currentLang = localStorage.getItem('language') || 'en';
-    formMessage.style.display = 'block';
-    formMessage.textContent = formMessage.getAttribute(`data-${currentLang}`);
-  }
-</script>
-
-
-    <script src="script.js"></script>
 </body>
 
 </html>
