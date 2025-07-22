@@ -1057,6 +1057,23 @@ footer {
     margin: 0 15px;
 }
 
+@media (max-width: 768px) {
+    .footer-links li {
+        margin: 0 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-links li {
+        margin: 0 5px;
+    }
+
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+}
+
+
 .footer-links a {
     color: var(--light);
     text-decoration: none;
