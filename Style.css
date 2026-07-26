@@ -3,7 +3,7 @@
 ============================= */
 :root {
     --primary: #447D9B;
-    --primary-transparent: rgba(107, 70, 193, 0.5);
+    --primary-transparent: rgba(68, 125, 155, 0.5);
     --dark: #1a202c;
     --light: #f7fafc;
     --secondary: #d3dae4;
@@ -14,8 +14,6 @@
     --header-bg: rgba(26, 32, 44, 0.7);
     --glass-blur: 12px;
     --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-    --primary: #447D9B;
-    --dark: #2c1e1a;
     --bg-image-opacity: 0.8;
 }
 
@@ -44,7 +42,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Agency FB', Ahlan;
-    transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -63,7 +61,7 @@ body {
 
 body.light-mode {
     background:
-        linear-gradient(rgba(247, 250, 252, var(--bg-image-opacity))),
+        linear-gradient(rgba(247, 250, 252, var(--bg-image-opacity)), rgba(247, 250, 252, var(--bg-image-opacity))),
         url('https://i.ibb.co/20GXbg0W/Chat-GPT-Image-Jul-18-2025-02-14-35-AM.png');
     background-size: cover;
     background-attachment: fixed;
@@ -92,7 +90,24 @@ body.light-mode {
     border-radius: 30px;
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
 }
 
 .btn-primary {
@@ -103,14 +118,14 @@ body.light-mode {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    background-color: #5d3db3;
+    background-color: #35637d;
     box-shadow: 0 8px 20px var(--primary-transparent);
 }
 
 .btn-outline {
     border: 2px solid var(--primary);
     color: var(--primary);
-    background-color: rgba(107, 70, 193, 0.1);
+    background-color: rgba(68, 125, 155, 0.1);
     backdrop-filter: blur(5px);
 }
 
@@ -133,7 +148,7 @@ body.light-mode {
 }
 
 .section-title h2 {
-    font-size: 5rem;
+    font-size: clamp(2.2rem, 5vw, 5rem);
     font-weight: bold;
     color: var(--text-color);
     margin-bottom: 15px;
@@ -164,7 +179,13 @@ header {
     border-bottom: var(--glass-border);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
 }
 
 header.scrolled {
@@ -192,7 +213,7 @@ header.scrolled {
 }
 
 .logo-img:hover {
-    filter: hue-rotate(10deg) brightness(1.05) drop-shadow(0 2px 4px rgba(107, 70, 193, 0.3));
+    filter: hue-rotate(10deg) brightness(1.05) drop-shadow(0 2px 4px rgba(68, 125, 155, 0.3));
     transform: scale(1.2);
     animation-play-state: paused;
 }
@@ -251,10 +272,18 @@ header.scrolled {
     width: 100%;
 }
 
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
 /* Switchers */
 .language-switcher,
 .theme-switcher {
-    background: rgba(107, 70, 193, 0.1);
+    background: rgba(68, 125, 155, 0.1);
     border: var(--glass-border);
     color: var(--text-color);
     font-size: 1rem;
@@ -271,11 +300,22 @@ header.scrolled {
 
 .language-switcher:hover,
 .theme-switcher:hover {
-    background-color: rgba(107, 70, 193, 0.25);
+    background-color: rgba(68, 125, 155, 0.25);
+    transform: translateY(-2px);
 }
 
 .theme-switcher i {
     font-size: 1.3rem;
+    display: inline-block;
+}
+
+.icon-pop {
+    animation: iconPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iconPop {
+    0% { transform: scale(0.5) rotate(-90deg); opacity: 0.3; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
 /* =============================
@@ -288,11 +328,21 @@ header.scrolled {
     padding: 0 12%;
     position: relative;
     overflow: hidden;
+    direction: ltr;
+    /* Keeps the hero layout physically fixed in both languages, so the
+       content box never swaps sides and collides with the hero image
+       when the page switches to Arabic (RTL). Text direction/alignment
+       inside .hero-content is restored separately below. */
 }
 
 .hero-content {
     max-width: 600px;
     z-index: 2;
+}
+
+body[dir="rtl"] .hero-content {
+    direction: rtl;
+    text-align: right;
 }
 
 .hero h1 {
@@ -360,10 +410,10 @@ header.scrolled {
 .floating-element {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-transparent), rgba(107, 70, 193, 0.3));
+    background: linear-gradient(135deg, var(--primary-transparent), rgba(68, 125, 155, 0.3));
     animation: float 15s infinite linear;
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(107, 70, 193, 0.2);
+    border: 1px solid rgba(68, 125, 155, 0.2);
 }
 
 /* الافتراضي: للتابلت والديسكتوب العادي */
@@ -470,7 +520,7 @@ header.scrolled {
 }
 
 .about-text h3 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
     font-weight: bold;
     margin-bottom: 20px;
     color: var(--primary);
@@ -499,7 +549,7 @@ header.scrolled {
 }
 
 .skill {
-    background-color: rgba(107, 70, 193, 0.08);
+    background-color: rgba(68, 125, 155, 0.08);
     padding: 12px 24px;
     border-radius: 999px;
     font-size: 1rem;
@@ -509,12 +559,27 @@ header.scrolled {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: default;
     display: flex;
     align-items: center;
     gap: 10px;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
 }
+
+.skill:nth-child(1) { animation-delay: 0.03s; }
+.skill:nth-child(2) { animation-delay: 0.08s; }
+.skill:nth-child(3) { animation-delay: 0.13s; }
+.skill:nth-child(4) { animation-delay: 0.18s; }
+.skill:nth-child(5) { animation-delay: 0.23s; }
+.skill:nth-child(6) { animation-delay: 0.28s; }
+.skill:nth-child(7) { animation-delay: 0.33s; }
+.skill:nth-child(8) { animation-delay: 0.38s; }
+.skill:nth-child(9) { animation-delay: 0.43s; }
+.skill:nth-child(10) { animation-delay: 0.48s; }
+.skill:nth-child(11) { animation-delay: 0.53s; }
+.skill:nth-child(12) { animation-delay: 0.58s; }
 
 .skill i {
     font-size: 1.1rem;
@@ -567,7 +632,14 @@ header.scrolled {
     display: flex;
     align-items: center;
     gap: 10px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
 }
+
+.skill-item:nth-child(1) { animation-delay: 0.05s; }
+.skill-item:nth-child(2) { animation-delay: 0.15s; }
+.skill-item:nth-child(3) { animation-delay: 0.25s; }
+.skill-item:nth-child(4) { animation-delay: 0.35s; }
 
 .skill-icon {
     width: 40px;
@@ -579,6 +651,11 @@ header.scrolled {
     justify-content: center;
     color: white;
     font-size: 1.5rem;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.15) rotate(-8deg);
 }
 
 .skill-name {
@@ -589,15 +666,17 @@ header.scrolled {
 .skill-level {
     width: 100px;
     height: 6px;
-    background-color: rgba(107, 70, 193, 0.2);
+    background-color: rgba(68, 125, 155, 0.2);
     border-radius: 3px;
     overflow: hidden;
 }
 
 .skill-progress {
     height: 100%;
+    width: 0%;
     background-color: var(--primary);
     border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* =============================
@@ -609,7 +688,11 @@ header.scrolled {
 }
 
 .project-category {
-    margin-bottom: 200px;
+    margin-bottom: 80px;
+}
+
+.project-category:last-child {
+    margin-bottom: 0;
 }
 
 .projects-grid {
@@ -619,7 +702,7 @@ header.scrolled {
 }
 
 .project-category h3 {
-    font-size: 3rem;
+    font-size: clamp(1.7rem, 3vw, 3rem);
     font-weight: bold;
     color: var(--text-color);
     margin-bottom: 30px;
@@ -648,14 +731,24 @@ header.scrolled {
     overflow: hidden;
     height: 250px;
     box-shadow: 0 5px 15px #ffffff1a;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
     background: var(--card-bg);
     backdrop-filter: blur(var(--glass-blur));
     border: var(--glass-border);
+    opacity: 0;
+    animation: fadeInUp 0.7s ease forwards;
 }
 
+.project-card:nth-child(1) { animation-delay: 0.05s; }
+.project-card:nth-child(2) { animation-delay: 0.15s; }
+.project-card:nth-child(3) { animation-delay: 0.25s; }
+.project-card:nth-child(4) { animation-delay: 0.35s; }
+.project-card:nth-child(5) { animation-delay: 0.45s; }
+.project-card:nth-child(6) { animation-delay: 0.55s; }
+
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.015);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .project-card img {
@@ -744,14 +837,14 @@ header.scrolled {
     padding: 40px 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
     border: var(--glass-border);
 }
 
 .experience-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
@@ -820,14 +913,14 @@ header.scrolled {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
     border: var(--glass-border);
 }
 
 .course-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
@@ -1011,13 +1104,83 @@ textarea.form-control {
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+.submit-btn:hover::before {
+    transform: translateX(100%);
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px var(--primary-transparent);
+}
+
+/* =============================
+        SCROLL TO TOP BUTTON
+============================= */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: var(--glass-border);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                visibility 0.35s,
+                background-color 0.3s ease;
+}
+
+#scrollTopBtn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+#scrollTopBtn:hover {
+    background-color: #35637d;
+    transform: translateY(-4px) scale(1.05);
+}
+
+#scrollTopBtn:active {
+    transform: translateY(-1px) scale(0.95);
+}
+
+@media (max-width: 576px) {
+    #scrollTopBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
 }
 
 /* =============================
@@ -1304,6 +1467,10 @@ footer {
     .hero-content {
         max-width: 100%;
         margin-bottom: 50px;
+    }
+
+    body[dir="rtl"] .hero-content {
+        text-align: center;
     }
 
     .hero-btns {
